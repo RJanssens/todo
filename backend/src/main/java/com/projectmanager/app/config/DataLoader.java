@@ -6,11 +6,14 @@ import com.projectmanager.app.model.Ticket.TicketStatus;
 import com.projectmanager.app.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
 @Component
+@DependsOn("entityManagerFactory")
 public class DataLoader implements CommandLineRunner {
 
     @Autowired
@@ -29,6 +32,7 @@ public class DataLoader implements CommandLineRunner {
     private CommentRepository commentRepository;
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         // Create sample users
         User john = new User();
