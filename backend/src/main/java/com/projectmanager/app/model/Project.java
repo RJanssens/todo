@@ -23,7 +23,7 @@ public class Project {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "`key`", nullable = false, unique = true)
     private String key;
 
     @Column(length = 2000)
