@@ -1,0 +1,139 @@
+<div class="ticket-board">
+  <div *ngIf="loading" class="loading">
+    <p>Loading tickets...</p>
+  </div>
+
+  <div *ngIf="!loading" class="board-columns">
+    <!-- To Do Column -->
+    <div class="board-column">
+      <div class="column-header">
+        <h3>To Do</h3>
+        <span class="ticket-count">{{ todoTickets.length }}</span>
+      </div>
+      <div class="column-content">
+        <div *ngFor="let ticket of todoTickets" class="ticket-card" [routerLink]="['/tickets', ticket.id]">
+          <div class="ticket-header">
+            <span class="ticket-number">{{ ticket.ticketNumber }}</span>
+            <span class="ticket-priority" [ngClass]="getPriorityClass(ticket.priority)">
+              {{ ticket.priority }}
+            </span>
+          </div>
+          <h4 class="ticket-title">{{ ticket.title }}</h4>
+          <div class="ticket-footer">
+            <div class="ticket-tags">
+              <span *ngFor="let tag of ticket.tags" class="tag" [style.background-color]="tag.color">
+                {{ tag.name }}
+              </span>
+            </div>
+            <div class="ticket-assignee" *ngIf="ticket.assignee">
+              <img *ngIf="ticket.assignee.avatarUrl" [src]="ticket.assignee.avatarUrl"
+                   [alt]="ticket.assignee.fullName" class="avatar">
+              <span *ngIf="!ticket.assignee.avatarUrl" class="avatar-placeholder">
+                {{ ticket.assignee.fullName.charAt(0) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- In Progress Column -->
+    <div class="board-column">
+      <div class="column-header">
+        <h3>In Progress</h3>
+        <span class="ticket-count">{{ inProgressTickets.length }}</span>
+      </div>
+      <div class="column-content">
+        <div *ngFor="let ticket of inProgressTickets" class="ticket-card" [routerLink]="['/tickets', ticket.id]">
+          <div class="ticket-header">
+            <span class="ticket-number">{{ ticket.ticketNumber }}</span>
+            <span class="ticket-priority" [ngClass]="getPriorityClass(ticket.priority)">
+              {{ ticket.priority }}
+            </span>
+          </div>
+          <h4 class="ticket-title">{{ ticket.title }}</h4>
+          <div class="ticket-footer">
+            <div class="ticket-tags">
+              <span *ngFor="let tag of ticket.tags" class="tag" [style.background-color]="tag.color">
+                {{ tag.name }}
+              </span>
+            </div>
+            <div class="ticket-assignee" *ngIf="ticket.assignee">
+              <img *ngIf="ticket.assignee.avatarUrl" [src]="ticket.assignee.avatarUrl"
+                   [alt]="ticket.assignee.fullName" class="avatar">
+              <span *ngIf="!ticket.assignee.avatarUrl" class="avatar-placeholder">
+                {{ ticket.assignee.fullName.charAt(0) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ready for Review Column -->
+    <div class="board-column">
+      <div class="column-header">
+        <h3>Ready for Review</h3>
+        <span class="ticket-count">{{ reviewTickets.length }}</span>
+      </div>
+      <div class="column-content">
+        <div *ngFor="let ticket of reviewTickets" class="ticket-card" [routerLink]="['/tickets', ticket.id]">
+          <div class="ticket-header">
+            <span class="ticket-number">{{ ticket.ticketNumber }}</span>
+            <span class="ticket-priority" [ngClass]="getPriorityClass(ticket.priority)">
+              {{ ticket.priority }}
+            </span>
+          </div>
+          <h4 class="ticket-title">{{ ticket.title }}</h4>
+          <div class="ticket-footer">
+            <div class="ticket-tags">
+              <span *ngFor="let tag of ticket.tags" class="tag" [style.background-color]="tag.color">
+                {{ tag.name }}
+              </span>
+            </div>
+            <div class="ticket-assignee" *ngIf="ticket.assignee">
+              <img *ngIf="ticket.assignee.avatarUrl" [src]="ticket.assignee.avatarUrl"
+                   [alt]="ticket.assignee.fullName" class="avatar">
+              <span *ngIf="!ticket.assignee.avatarUrl" class="avatar-placeholder">
+                {{ ticket.assignee.fullName.charAt(0) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Done Column -->
+    <div class="board-column">
+      <div class="column-header">
+        <h3>Done</h3>
+        <span class="ticket-count">{{ doneTickets.length }}</span>
+      </div>
+      <div class="column-content">
+        <div *ngFor="let ticket of doneTickets" class="ticket-card" [routerLink]="['/tickets', ticket.id]">
+          <div class="ticket-header">
+            <span class="ticket-number">{{ ticket.ticketNumber }}</span>
+            <span class="ticket-priority" [ngClass]="getPriorityClass(ticket.priority)">
+              {{ ticket.priority }}
+            </span>
+          </div>
+          <h4 class="ticket-title">{{ ticket.title }}</h4>
+          <div class="ticket-footer">
+            <div class="ticket-tags">
+              <span *ngFor="let tag of ticket.tags" class="tag" [style.background-color]="tag.color">
+                {{ tag.name }}
+              </span>
+            </div>
+            <div class="ticket-assignee" *ngIf="ticket.assignee">
+              <img *ngIf="ticket.assignee.avatarUrl" [src]="ticket.assignee.avatarUrl"
+                   [alt]="ticket.assignee.fullName" class="avatar">
+              <span *ngIf="!ticket.assignee.avatarUrl" class="avatar-placeholder">
+                {{ ticket.assignee.fullName.charAt(0) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

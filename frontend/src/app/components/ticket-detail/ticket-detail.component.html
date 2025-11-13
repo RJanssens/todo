@@ -1,0 +1,123 @@
+<div class="ticket-detail-container">
+  <div *ngIf="loading" class="loading">
+    <p>Loading ticket...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && !error && ticket" class="ticket-content">
+    <div class="breadcrumb">
+      <a routerLink="/">Projects</a>
+      <span class="separator">/</span>
+      <a [routerLink]="['/projects', ticket.project.id]">{{ ticket.project.name }}</a>
+      <span class="separator">/</span>
+      <span class="current">{{ ticket.ticketNumber }}</span>
+    </div>
+
+    <div class="ticket-main">
+      <div class="ticket-left">
+        <div class="ticket-header">
+          <span class="ticket-number">{{ ticket.ticketNumber }}</span>
+          <h1 class="ticket-title">{{ ticket.title }}</h1>
+        </div>
+
+        <div class="ticket-description">
+          <h3>Description</h3>
+          <p>{{ ticket.description || 'No description provided' }}</p>
+        </div>
+
+        <div class="comments-section">
+          <h3>Comments</h3>
+          <div class="comments-list">
+            <div *ngFor="let comment of comments" class="comment">
+              <div class="comment-header">
+                <div class="comment-author">
+                  <img *ngIf="comment.author.avatarUrl" [src]="comment.author.avatarUrl"
+                       [alt]="comment.author.fullName" class="avatar">
+                  <span *ngIf="!comment.author.avatarUrl" class="avatar-placeholder">
+                    {{ comment.author.fullName.charAt(0) }}
+                  </span>
+                  <span class="author-name">{{ comment.author.fullName }}</span>
+                </div>
+                <span class="comment-date">{{ formatDate(comment.createdAt!) }}</span>
+              </div>
+              <div class="comment-content">
+                {{ comment.content }}
+              </div>
+            </div>
+            <div *ngIf="comments.length === 0" class="no-comments">
+              No comments yet
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-right">
+        <div class="ticket-metadata">
+          <div class="metadata-item">
+            <label>Status</label>
+            <span class="status-badge">{{ getStatusDisplayName(ticket.status) }}</span>
+          </div>
+
+          <div class="metadata-item">
+            <label>Priority</label>
+            <span class="priority-badge" [ngClass]="getPriorityClass(ticket.priority)">
+              {{ ticket.priority }}
+            </span>
+          </div>
+
+          <div class="metadata-item">
+            <label>Assignee</label>
+            <div *ngIf="ticket.assignee" class="user-info">
+              <img *ngIf="ticket.assignee.avatarUrl" [src]="ticket.assignee.avatarUrl"
+                   [alt]="ticket.assignee.fullName" class="avatar">
+              <span *ngIf="!ticket.assignee.avatarUrl" class="avatar-placeholder">
+                {{ ticket.assignee.fullName.charAt(0) }}
+              </span>
+              <span>{{ ticket.assignee.fullName }}</span>
+            </div>
+            <span *ngIf="!ticket.assignee" class="unassigned">Unassigned</span>
+          </div>
+
+          <div class="metadata-item">
+            <label>Reporter</label>
+            <div class="user-info">
+              <img *ngIf="ticket.reporter.avatarUrl" [src]="ticket.reporter.avatarUrl"
+                   [alt]="ticket.reporter.fullName" class="avatar">
+              <span *ngIf="!ticket.reporter.avatarUrl" class="avatar-placeholder">
+                {{ ticket.reporter.fullName.charAt(0) }}
+              </span>
+              <span>{{ ticket.reporter.fullName }}</span>
+            </div>
+          </div>
+
+          <div class="metadata-item" *ngIf="ticket.dueDate">
+            <label>Due Date</label>
+            <span>{{ formatDate(ticket.dueDate) }}</span>
+          </div>
+
+          <div class="metadata-item" *ngIf="ticket.tags && ticket.tags.length > 0">
+            <label>Tags</label>
+            <div class="tags-list">
+              <span *ngFor="let tag of ticket.tags" class="tag" [style.background-color]="tag.color">
+                {{ tag.name }}
+              </span>
+            </div>
+          </div>
+
+          <div class="metadata-item">
+            <label>Created</label>
+            <span>{{ formatDate(ticket.createdAt!) }}</span>
+          </div>
+
+          <div class="metadata-item">
+            <label>Updated</label>
+            <span>{{ formatDate(ticket.updatedAt!) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

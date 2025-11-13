@@ -1,0 +1,38 @@
+# Backend (Maven/Spring Boot)
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/.settings/
+backend/.project
+backend/.classpath
+backend/.factorypath
+backend/.springBeans
+backend/.sts4-cache/
+backend/bin/
+
+# Frontend (Angular/Node)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.vscode/
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local

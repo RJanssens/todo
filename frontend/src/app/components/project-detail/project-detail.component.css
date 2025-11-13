@@ -1,0 +1,80 @@
+.project-detail-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.project-header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.5rem 2rem;
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 0.5rem;
+}
+
+.current {
+  color: #1a1a1a;
+}
+
+.project-info h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.project-key {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.project-description {
+  color: #666;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.project-meta {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.owner {
+  font-weight: 500;
+}

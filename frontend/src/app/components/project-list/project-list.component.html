@@ -1,0 +1,30 @@
+<div class="project-list-container">
+  <div class="header">
+    <h1>Projects</h1>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading projects...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && !error" class="projects-grid">
+    <div *ngFor="let project of projects" class="project-card" [routerLink]="['/projects', project.id]">
+      <div class="project-header">
+        <span class="project-key">{{ project.key }}</span>
+        <h2 class="project-name">{{ project.name }}</h2>
+      </div>
+      <p class="project-description">{{ project.description || 'No description' }}</p>
+      <div class="project-footer">
+        <span class="project-owner">{{ project.owner.fullName }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !error && projects.length === 0" class="empty-state">
+    <p>No projects found</p>
+  </div>
+</div>

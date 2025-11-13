@@ -1,0 +1,31 @@
+<div class="project-detail-container">
+  <div *ngIf="loading" class="loading">
+    <p>Loading project...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && !error && project">
+    <div class="project-header">
+      <div class="breadcrumb">
+        <a routerLink="/">Projects</a>
+        <span class="separator">/</span>
+        <span class="current">{{ project.name }}</span>
+      </div>
+      <div class="project-info">
+        <h1>
+          <span class="project-key">{{ project.key }}</span>
+          {{ project.name }}
+        </h1>
+        <p class="project-description">{{ project.description }}</p>
+        <div class="project-meta">
+          <span class="owner">Owner: {{ project.owner.fullName }}</span>
+        </div>
+      </div>
+    </div>
+
+    <app-ticket-board [projectId]="project.id!"></app-ticket-board>
+  </div>
+</div>
