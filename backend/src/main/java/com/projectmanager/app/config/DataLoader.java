@@ -59,14 +59,14 @@ public class DataLoader implements CommandLineRunner {
         // Create sample projects
         Project webProject = new Project();
         webProject.setName("Web Application");
-        webProject.setKey("WEB");
+        webProject.setProjectKey("WEB");
         webProject.setDescription("Main web application project");
         webProject.setOwner(john);
         webProject = projectRepository.save(webProject);
 
         Project mobileProject = new Project();
         mobileProject.setName("Mobile App");
-        mobileProject.setKey("MOB");
+        mobileProject.setProjectKey("MOB");
         mobileProject.setDescription("Mobile application for iOS and Android");
         mobileProject.setOwner(jane);
         mobileProject = projectRepository.save(mobileProject);

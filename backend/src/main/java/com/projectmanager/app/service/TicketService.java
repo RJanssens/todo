@@ -130,7 +130,7 @@ public class TicketService {
         String ticketNumber;
 
         do {
-            ticketNumber = project.getKey() + "-" + nextNumber;
+            ticketNumber = project.getProjectKey() + "-" + nextNumber;
             nextNumber++;
         } while (ticketRepository.existsByTicketNumber(ticketNumber));
 

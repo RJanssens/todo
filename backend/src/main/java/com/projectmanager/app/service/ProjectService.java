@@ -29,21 +29,21 @@ public class ProjectService {
             .orElseThrow(() -> new RuntimeException("Project not found with id: " + id));
     }
 
-    public Project getProjectByKey(String key) {
-        return projectRepository.findByKey(key)
-            .orElseThrow(() -> new RuntimeException("Project not found with key: " + key));
+    public Project getProjectByKey(String projectKey) {
+        return projectRepository.findByProjectKey(projectKey)
+            .orElseThrow(() -> new RuntimeException("Project not found with key: " + projectKey));
     }
 
     public Project createProject(CreateProjectRequest request) {
-        if (projectRepository.existsByKey(request.getKey())) {
-            throw new RuntimeException("Project key already exists: " + request.getKey());
+        if (projectRepository.existsByProjectKey(request.getProjectKey())) {
+            throw new RuntimeException("Project key already exists: " + request.getProjectKey());
         }
 
         User owner = userService.getUserById(request.getOwnerId());
 
         Project project = new Project();
         project.setName(request.getName());
-        project.setKey(request.getKey().toUpperCase());
+        project.setProjectKey(request.getProjectKey().toUpperCase());
         project.setDescription(request.getDescription());
         project.setOwner(owner);
 
@@ -53,15 +53,15 @@ public class ProjectService {
     public Project updateProject(Long id, CreateProjectRequest request) {
         Project project = getProjectById(id);
 
-        if (!project.getKey().equals(request.getKey()) &&
-            projectRepository.existsByKey(request.getKey())) {
-            throw new RuntimeException("Project key already exists: " + request.getKey());
+        if (!project.getProjectKey().equals(request.getProjectKey()) &&
+            projectRepository.existsByProjectKey(request.getProjectKey())) {
+            throw new RuntimeException("Project key already exists: " + request.getProjectKey());
         }
 
         User owner = userService.getUserById(request.getOwnerId());
 
         project.setName(request.getName());
-        project.setKey(request.getKey().toUpperCase());
+        project.setProjectKey(request.getProjectKey().toUpperCase());
         project.setDescription(request.getDescription());
         project.setOwner(owner);
 

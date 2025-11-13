@@ -14,7 +14,7 @@
   <div *ngIf="!loading && !error" class="projects-grid">
     <div *ngFor="let project of projects" class="project-card" [routerLink]="['/projects', project.id]">
       <div class="project-header">
-        <span class="project-key">{{ project.key }}</span>
+        <span class="project-key">{{ project.projectKey }}</span>
         <h2 class="project-name">{{ project.name }}</h2>
       </div>
       <p class="project-description">{{ project.description || 'No description' }}</p>

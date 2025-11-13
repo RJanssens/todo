@@ -29,9 +29,9 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getProjectById(id));
     }
 
-    @GetMapping("/key/{key}")
-    public ResponseEntity<Project> getProjectByKey(@PathVariable String key) {
-        return ResponseEntity.ok(projectService.getProjectByKey(key));
+    @GetMapping("/key/{projectKey}")
+    public ResponseEntity<Project> getProjectByKey(@PathVariable String projectKey) {
+        return ResponseEntity.ok(projectService.getProjectByKey(projectKey));
     }
 
     @PostMapping

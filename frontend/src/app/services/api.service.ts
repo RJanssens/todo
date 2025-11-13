@@ -45,8 +45,8 @@ export class ApiService {
     return this.http.get<Project>(`${this.baseUrl}/projects/${id}`);
   }
 
-  getProjectByKey(key: string): Observable<Project> {
-    return this.http.get<Project>(`${this.baseUrl}/projects/key/${key}`);
+  getProjectByKey(projectKey: string): Observable<Project> {
+    return this.http.get<Project>(`${this.baseUrl}/projects/key/${projectKey}`);
   }
 
   createProject(project: any): Observable<Project> {

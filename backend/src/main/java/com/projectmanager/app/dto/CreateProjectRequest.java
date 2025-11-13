@@ -10,7 +10,7 @@ public class CreateProjectRequest {
     private String name;
 
     @NotBlank(message = "Project key is required")
-    private String key;
+    private String projectKey;
 
     private String description;
 
